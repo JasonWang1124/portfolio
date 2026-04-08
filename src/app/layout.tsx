@@ -1,18 +1,11 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Noto_Sans_TC } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
   weight: ['400', '700'],
-  display: 'swap',
-});
-
-const notoSansTC = Noto_Sans_TC({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  weight: ['400', '700', '900'],
   display: 'swap',
 });
 
@@ -56,7 +49,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-Hant" dir="ltr" className={`${jetbrainsMono.variable} ${notoSansTC.variable}`}>
+    <html lang="zh-Hant" dir="ltr" className={jetbrainsMono.variable}>
       <head>
         <script
           type="application/ld+json"

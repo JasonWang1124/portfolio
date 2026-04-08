@@ -10,11 +10,11 @@
   --color-violet-dim: rgba(139, 92, 246, 0.27);
   --color-magenta: #e040fb;
   --color-text: #e8e6f0;
-  --color-text-dim: #9d9db8;
-  --color-text-muted: #6e6e88;
+  --color-text-dim: #a3a3bd;
+  --color-text-muted: #7a7a96;
   --color-border: #1a1a2e;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --font-sans: 'Noto Sans TC', ui-sans-serif, sans-serif;
+  --font-sans: 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Helvetica Neue', ui-sans-serif, sans-serif;
 }
 
 html {
