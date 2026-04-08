@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import SectionHeader from '@/components/SectionHeader';
 import { projects } from '@/data/profile';
@@ -9,9 +10,10 @@ export default function Projects() {
       <Reveal delay={100}>
         <div className="flex flex-col gap-px bg-border border border-border rounded-lg overflow-hidden">
           {projects.map((proj) => (
-            <div
-              key={proj.name}
-              className="bg-bg-card grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-4 md:gap-8 items-center p-6 lg:px-10 hover:bg-bg-elevated transition-colors group"
+            <Link
+              key={proj.slug}
+              href={`/projects/${proj.slug}`}
+              className="bg-bg-card grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-4 md:gap-8 items-center p-6 lg:px-10 hover:bg-bg-elevated transition-colors group no-underline"
             >
               <h3 className="font-mono text-base font-bold group-hover:text-cyan transition-colors">
                 {proj.name}
@@ -27,7 +29,7 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Reveal>
