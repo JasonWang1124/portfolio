@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Jason Wang 王俊凱
+
+個人技術 Portfolio 網站，展示工作經歷、技術棧與代表性專案。
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Static Export)
+- **Language**: TypeScript (strict mode)
+- **Styling**: [TailwindCSS v4](https://tailwindcss.com/)
+- **Testing**: Vitest
+- **CI/CD**: GitHub Actions → Cloudflare Pages
+- **Hosting**: Cloudflare Pages
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout (SEO metadata, fonts, JSON-LD)
+│   ├── page.tsx            # Home page (composes sections)
+│   └── globals.css         # Theme variables & base styles
+├── components/
+│   ├── sections/           # Page sections (Hero, Experience, AI, etc.)
+│   │   ├── index.ts        # Barrel export
+│   │   ├── Hero.tsx
+│   │   ├── Experience.tsx
+│   │   ├── Languages.tsx
+│   │   ├── Frameworks.tsx
+│   │   ├── AI.tsx
+│   │   ├── Data.tsx
+│   │   ├── Infrastructure.tsx
+│   │   ├── Projects.tsx
+│   │   └── Footer.tsx
+│   ├── Nav.tsx             # Navigation with scroll-aware active state
+│   ├── Reveal.tsx          # IntersectionObserver scroll animation wrapper
+│   ├── ParticleCanvas.tsx  # Canvas-based particle system (GPU rendered)
+│   ├── SectionHeader.tsx   # Reusable section header
+│   └── GithubIcon.tsx      # GitHub SVG icon
+├── data/
+│   └── profile.ts          # All profile data (separated from UI)
+└── lib/
+    └── highlight.tsx       # Safe text highlighting (no dangerouslySetInnerHTML)
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production build
+npm run build
+
+# Lint
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### SEO
+- Next.js Metadata API (title, description, keywords)
+- Open Graph & Twitter Card tags
+- JSON-LD structured data (Person schema)
+- Semantic HTML with proper heading hierarchy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Accessibility
+- Skip-to-content link
+- ARIA labels & `aria-hidden` for decorative elements
+- `:focus-visible` keyboard navigation styles
+- `prefers-reduced-motion` support (all animations disabled)
+- Print-friendly stylesheet
 
-## Learn More
+### Performance
+- Google Fonts via `next/font` (zero layout shift)
+- Canvas particle system with `requestAnimationFrame`
+- IntersectionObserver with `unobserve` after trigger
+- Scroll events throttled with `requestAnimationFrame`
+- Static export (no server runtime needed)
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This site is configured for static export, compatible with:
+- **Cloudflare Pages** (recommended)
+- Vercel
+- Netlify
+- Any static hosting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+# Output in .next/ — deploy the static export
+```
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
