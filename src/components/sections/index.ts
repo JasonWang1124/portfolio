@@ -1,0 +1,9 @@
+export { default as Hero } from './Hero';
+export { default as Experience } from './Experience';
+export { default as Languages } from './Languages';
+export { default as Frameworks } from './Frameworks';
+export { default as AI } from './AI';
+export { default as Data } from './Data';
+export { default as Infrastructure } from './Infrastructure';
+export { default as Projects } from './Projects';
+export { default as Footer } from './Footer';
