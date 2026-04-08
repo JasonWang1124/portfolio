@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #06060a;
+  --color-bg-elevated: #0c0c14;
+  --color-bg-card: #0f0f1a;
+  --color-cyan: #00e5ff;
+  --color-cyan-dim: rgba(0, 229, 255, 0.27);
+  --color-violet: #8b5cf6;
+  --color-violet-dim: rgba(139, 92, 246, 0.27);
+  --color-magenta: #e040fb;
+  --color-text: #e8e6f0;
+  --color-text-dim: #8888a0;
+  --color-text-muted: #4a4a60;
+  --color-border: #1a1a2e;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Noto Sans TC', ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-cyan-dim) var(--color-bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print */
+@media print {
+  body { background: #fff; color: #111; }
+  nav, canvas, .scanline, .grid-bg { display: none !important; }
+}
+
+/* Reveal animation base */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
 }
