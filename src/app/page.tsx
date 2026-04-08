@@ -1,5 +1,5 @@
 import Nav from '@/components/Nav';
-import ParticleCanvas from '@/components/ParticleCanvas';
+import LazyParticles from '@/components/LazyParticles';
 import {
   Hero,
   Experience,
@@ -37,7 +37,7 @@ export default function Home() {
         }}
         aria-hidden="true"
       />
-      <ParticleCanvas />
+      <LazyParticles />
 
       {/* Skip to content (a11y) */}
       <a

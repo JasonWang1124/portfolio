@@ -27,7 +27,7 @@ export default function Nav() {
         ticking = true;
       }
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -52,24 +52,25 @@ export default function Nav() {
         scrolled ? 'bg-bg/95' : 'bg-bg/70'
       }`}
     >
-      <div className="font-mono font-bold text-lg text-cyan">
+      <a href="#" className="font-mono font-bold text-lg text-cyan no-underline">
         jason<span className="text-text-dim font-normal">.wang</span>
-      </div>
-      <div className="hidden md:flex gap-8">
+      </a>
+      <ul className="hidden md:flex gap-8 list-none m-0 p-0" role="list">
         {links.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            className={`font-mono text-xs uppercase tracking-widest relative transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-px after:bg-cyan after:transition-[width] after:duration-300 ${
-              active === l.href
-                ? 'text-cyan after:w-full'
-                : 'text-text-dim hover:text-cyan after:w-0 hover:after:w-full'
-            }`}
-          >
-            {l.label}
-          </a>
+          <li key={l.href}>
+            <a
+              href={l.href}
+              className={`font-mono text-xs uppercase tracking-widest relative transition-colors no-underline after:absolute after:bottom-[-4px] after:left-0 after:h-px after:bg-cyan after:transition-[width] after:duration-300 ${
+                active === l.href
+                  ? 'text-cyan after:w-full'
+                  : 'text-text-dim hover:text-cyan after:w-0 hover:after:w-full'
+              }`}
+            >
+              {l.label}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </nav>
   );
 }

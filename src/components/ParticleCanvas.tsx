@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 
 const COLORS = ['#00e5ff', '#8b5cf6', '#e040fb'];
-const COUNT = 50;
 
 interface Particle {
   x: number;
@@ -44,6 +43,8 @@ export default function ParticleCanvas() {
     if (!ctx) return;
 
     let animId: number;
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 20 : 40;
     const particles: Particle[] = [];
 
     function resize() {
@@ -51,9 +52,9 @@ export default function ParticleCanvas() {
       canvas!.height = window.innerHeight;
     }
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
-    for (let i = 0; i < COUNT; i++) {
+    for (let i = 0; i < count; i++) {
       particles.push(createParticle(canvas.width, canvas.height, true));
     }
 
