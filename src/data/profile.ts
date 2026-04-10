@@ -189,7 +189,32 @@ export const infrastructure = [
   },
 ] as const;
 
+// TODO: 當 OpenAlice PR merge 至 upstream 後，移除「PR 進行中」字樣並加上 PR 連結
 export const projects = [
+  {
+    slug: 'fugle-mcp-http',
+    name: 'Fugle MarketData MCP (HTTP)',
+    role: '主要開發者 — 個人開源專案',
+    desc: 'Python FastMCP 伺服器，將富果 MarketData API 以 HTTP streamable transport 暴露為 MCP 工具',
+    stack: ['Python', 'FastMCP', 'MCP', 'HTTP'],
+    detail: '從零開發的 Python 開源專案，將官方 TypeScript stdio 版本重寫為 Python HTTP streamable transport 版本。以長駐服務取代 per-session process spawn，降低延遲並支援多客戶端共享。獨立加入 volume spike detection 工具，支援多股票並行掃描與單日去重，設計為可被 AI agent 或排程器定時輪詢使用。',
+    challenges: ['HTTP streamable transport 的長駐連線生命週期管理', '多股票輪詢的單日去重策略設計', 'Fugle API 方案限制的優雅降級處理'],
+  },
+  {
+    slug: 'open-alice',
+    name: 'Open Alice',
+    role: '開源貢獻者 — StrategyCouncil 與回測引擎（PR 進行中）',
+    desc: '為 AI 交易 Agent 平台 Open Alice 貢獻多 Agent 審議與分鐘級回測引擎',
+    stack: ['TypeScript', 'Node.js', 'Claude Agent SDK', 'Multi-Agent'],
+    detail: 'Open Alice 是檔案驅動的 AI 交易 Agent 開源專案，以 Claude Agent SDK 為核心，整合多 broker、Trading-as-Git 工作流與 Guard 安全管線。本人於 fork 分支持續貢獻功能，目前 PR 待提交至 upstream（TraderAlice/OpenAlice）。',
+    contributions: [
+      'StrategyCouncil 多 Agent 審議機制（含 dashboard 與 demo harness）',
+      'cursor-based replay 的分鐘級回測引擎',
+      'Fugle MarketData MCP bridge',
+      'K-line 互動圖表工具',
+    ],
+    challenges: ['多 Agent 審議的決策合流與衝突解決', '分鐘級回測的 cursor-based replay 時序一致性', '融入大型既有 codebase 的架構適配'],
+  },
   {
     slug: 'ai-voice-platform',
     name: 'AI Voice Platform',

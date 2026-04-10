@@ -70,6 +70,24 @@ export default async function ProjectPage({ params }: PageProps) {
           <p className="text-text-dim leading-relaxed">{project.detail}</p>
         </section>
 
+        {/* Contributions (optional) */}
+        {'contributions' in project && project.contributions && (
+          <section className="mb-12">
+            <h2 className="font-mono text-xs text-cyan tracking-[0.2em] uppercase mb-4 flex items-center gap-4">
+              Contributions
+              <span className="flex-1 max-w-[120px] h-px bg-gradient-to-r from-cyan-dim to-transparent" />
+            </h2>
+            <ul className="space-y-3">
+              {project.contributions.map((c, i) => (
+                <li key={i} className="text-text-dim flex items-baseline gap-3">
+                  <span className="text-cyan text-xs flex-shrink-0">&#x25B8;</span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* Challenges */}
         <section className="mb-12">
           <h2 className="font-mono text-xs text-violet tracking-[0.2em] uppercase mb-4 flex items-center gap-4">
