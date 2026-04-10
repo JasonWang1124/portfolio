@@ -15,9 +15,12 @@ export default function Projects() {
               href={`/projects/${proj.slug}`}
               className="bg-bg-card grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-4 md:gap-8 items-center p-6 lg:px-10 hover:bg-bg-elevated transition-colors group no-underline"
             >
-              <h3 className="font-mono text-base font-bold group-hover:text-cyan transition-colors">
-                {proj.name}
-              </h3>
+              <div>
+                <h3 className="font-mono text-base font-bold group-hover:text-cyan transition-colors">
+                  {proj.name}
+                </h3>
+                <p className="font-mono text-[0.65rem] text-violet mt-1">{proj.role}</p>
+              </div>
               <p className="text-sm text-text-dim">{proj.desc}</p>
               <div className="flex flex-wrap gap-1.5 md:justify-end">
                 {proj.stack.map((s) => (

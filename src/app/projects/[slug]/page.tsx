@@ -43,9 +43,10 @@ export default async function ProjectPage({ params }: PageProps) {
         </Link>
 
         {/* Header */}
-        <h1 className="text-4xl lg:text-5xl font-black tracking-tight mb-4">
+        <h1 className="text-4xl lg:text-5xl font-black tracking-tight mb-3">
           {project.name}
         </h1>
+        <p className="font-mono text-sm text-violet mb-4">{project.role}</p>
         <p className="text-lg text-text-dim leading-relaxed mb-8">{project.desc}</p>
 
         {/* Stack tags */}
