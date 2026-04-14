@@ -216,6 +216,15 @@ export const projects = [
     challenges: ['多 Agent 審議的決策合流與衝突解決', '分鐘級回測的 cursor-based replay 時序一致性', '融入大型既有 codebase 的架構適配'],
   },
   {
+    slug: 'agent-pomodoro',
+    name: 'Agent Pomodoro',
+    role: '主要開發者 — 個人開源專案',
+    desc: 'Glassmorphism 番茄鐘 Chrome Extension，內建本地 FastAPI 與 MCP 伺服器，讓 AI agent 能主動推送任務並接收倒數結束事件',
+    stack: ['Chrome MV3', 'FastAPI', 'MCP', 'Python', 'Docker'],
+    detail: '一個讓 AI agent（Claude Code / Cursor）能直接串接的桌面番茄鐘小組件。Chrome Extension 端以 Manifest V3 + chrome.alarms 實作 popup UI 與背景倒數，後端是跑在 localhost:8787 的 FastAPI 服務，原生支援 MCP Streamable HTTP transport（掛在 /mcp），agent 可透過 tool call 直接 POST 任務、查詢狀態、收 webhook 回呼。倒數結束自動觸發 hook（如 Mattermost DM）並回寫任務進度。State 存在 ~/.agent-pomodoro/state.json，零雲端依賴；UI 走 Glassmorphism Peach Dawn 風格，補上市面 Pomodoro 工具缺少的 agent 整合面向。',
+    challenges: ['Chrome MV3 service worker 生命週期下的精準倒數狀態同步', 'MCP Streamable HTTP transport 的長駐 session 與 tool 設計', 'Extension 與本地後端的雙向狀態一致性（agent 推送 vs 手動操作）'],
+  },
+  {
     slug: 'ai-voice-platform',
     name: 'AI Voice Platform',
     role: '參與開發 — 負責 STT 語音辨識模組',
